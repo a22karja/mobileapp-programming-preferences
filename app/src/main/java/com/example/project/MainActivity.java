@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,11 +21,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        myPreferenceRef = getPreferences(MODE_PRIVATE);
+    }
 
-        TextView prefTextRef=new TextView(this);
-        prefTextRef=(TextView)findViewById(R.id.prefText);
-        prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        myPreferenceRef = getSharedPreferences("shareBetweenActivity", Context.MODE_PRIVATE);
+
+        TextView prefTextRef = new TextView(this);
+        prefTextRef = (TextView) findViewById(R.id.prefText);
+        prefTextRef.setText(myPreferenceRef.getString("name", "No preference found."));
     }
 
     public void goToSecond(View v){
