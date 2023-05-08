@@ -27,17 +27,16 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void savePref(View v){
-        // Get the text
+        //Hämta text
         EditText newPrefText;
         newPrefText=(EditText)findViewById(R.id.settingseditview);
 
-        // Store the new preference
+        //spara till Shared Preferences
         myPreferenceEditor.putString("name", newPrefText.getText().toString());
         myPreferenceEditor.commit();
 
-        Toast.makeText(this, "Your details has been save" , Toast.LENGTH_SHORT).show();
 
-        // Clear the EditText
+        // reset
         newPrefText.setText("");
         startActivity(new Intent(SecondActivity.this, MainActivity.class));
     }

@@ -27,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
 
         super.onResume();
+        //Hämta text
         myPreferenceRef = getSharedPreferences("shareBetweenActivity", Context.MODE_PRIVATE);
-
+        //sätt in text i TextView
         TextView prefTextRef = new TextView(this);
         prefTextRef = (TextView) findViewById(R.id.prefText);
         prefTextRef.setText(myPreferenceRef.getString("name", "No preference found."));
